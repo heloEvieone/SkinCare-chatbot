@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Box } from '@mui/material';
+import SidebarLeft from './components/SidebarLeft';
+import ChatInterface from './components/ChatInterface';
+import SidebarRight from './components/SidebarRight';
+import './App.css';  // Importing the CSS file
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Box className="app-container">
+      <Box className="sidebar-left">
+        <SidebarLeft />
+      </Box>
+      <Box className="chat-interface">
+        <ChatInterface />
+      </Box>
+      <Box className="sidebar-right-right">
+        <SidebarRight />
+      </Box>
+    </Box>
   );
-}
+};
 
 export default App;

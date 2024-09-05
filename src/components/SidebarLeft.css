@@ -1,0 +1,35 @@
+.sidebar-left {
+    background-color: #ffffffc0;
+    width: 70px;
+    height: 100%;
+    margin-left: 50px;
+    margin-top: 50px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 4px 0px #00000040;
+    overflow-y: auto; /* Allow vertical scroll if needed */
+    overflow-x: hidden; 
+  }
+  
+  .sidebar-item {
+    padding: 20px 16px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .sidebar-icon {
+    color: #03053D;
+  }
+  
+  /* Style for the logo */
+  .logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+  }
+  
+  .sidebar-logo {
+    max-width: 50px;
+    height: auto;
+  }
+  
