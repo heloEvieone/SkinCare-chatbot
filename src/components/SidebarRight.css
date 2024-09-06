@@ -8,20 +8,25 @@
     overflow-x: hidden; 
   }
   .inner {
-    padding: 16px;
+    padding: 15px 15px 0px 15px;
+    display: flex;
+    justify-content: flex-end;
   }
   .user-info {
     display: flex;
     align-items: center;
-    margin-bottom: 24px;
+    margin-bottom: 10px;
   }
   
   .new-chat-btn {
-    background-color: #42a5f5;
-    margin-bottom: 16px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
-  
-  .chat-history-item {
-    color: #333;
+
+  .history-btn-gp {
+    padding-left: 10px;
+    padding-right: 10px;
   }
   
