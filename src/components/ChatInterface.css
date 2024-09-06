@@ -33,7 +33,7 @@
 }
 
 .chat-message {
-  padding: 8px 12px;
+  padding: 0px 10px;
   border-radius: 8px;
   margin-bottom: 10px;
   max-width: 75%;
@@ -73,3 +73,61 @@
   color: #42a5f5;
 }
 
+.webcam-modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  max-width: 600px;
+  margin: 50px auto;
+}
+
+.webcam-frame {
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.capture-button {
+  margin-top: 10px;
+  background-color: #42a5f5;
+}
+
+.chat-image-preview {
+  max-width: 200px;
+  margin-top: 10px;
+  border-radius: 8px;
+}
+
+.image-preview-container {
+  display: flex;
+  align-items: center;
+}
+
+.image-preview {
+  max-height: 50px;
+  border-radius: 8px;
+  margin-right: 5px;
+}
+
+.remove-image-button {
+  color: red;
+}
+
+.captured-image-preview {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.chat-input {
+  border: transparent;
+  border-radius: 12px;
+  margin-top: 10px;
+}
+
+.icon-button {
+  color: #42a5f5;
+}

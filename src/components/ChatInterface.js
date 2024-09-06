@@ -1,17 +1,23 @@
 import React, { useState } from 'react';
-import { Box, TextField, IconButton, InputAdornment } from '@mui/material';
-import { CameraAlt, AttachFile, Send } from '@mui/icons-material';
+import { Box, TextField, IconButton, InputAdornment, Modal, Button } from '@mui/material';
+import { CameraAlt, AttachFile, Send, Clear } from '@mui/icons-material';
+import ReactWebcam from 'react-webcam';
 import Divider from '@mui/material/Divider';
 import './ChatInterface.css';
 
 const ChatInterface = () => {
   const [message, setMessage] = useState('');
   const [chatMessages, setChatMessages] = useState([]);
+  const [openWebcam, setOpenWebcam] = useState(false);
+  const [capturedImage, setCapturedImage] = useState(null);
 
   const handleSendMessage = () => {
-    if (message.trim()) {
-      // Add the user's message to the chat
-      const userMessage = { text: message, sender: 'user' };
+    if (message.trim() || capturedImage) {
+      const userMessage = {
+        text: message || null,
+        image: capturedImage || null,
+        sender: 'user',
+      };
       setChatMessages([...chatMessages, userMessage]);
 
       // Auto-reply from the system after a short delay
@@ -20,21 +26,46 @@ const ChatInterface = () => {
         setChatMessages((prevMessages) => [...prevMessages, systemMessage]);
       }, 1000);
 
-      // Clear the message input
+      // Clear the input and image
       setMessage('');
+      setCapturedImage(null);
     }
   };
+
+  const handleOpenWebcam = () => {
+    setOpenWebcam(true);
+  };
+
+  const handleCloseWebcam = () => {
+    setOpenWebcam(false);
+  };
+
+  const handleCapture = (webcamRef) => {
+    const imageSrc = webcamRef.current.getScreenshot();
+    setCapturedImage(imageSrc);
+    setOpenWebcam(false);
+  };
+
+  const handleRemoveImage = () => {
+    setCapturedImage(null);
+  };
+
+  const webcamRef = React.useRef(null);
 
   return (
     <Box className="chat-container">
       <Box className="chat-header">
         <strong>Korean products</strong>
       </Box>
-      <Divider sx={{ height:'1px', 
-                      backgroundColor: '#00000033', 
-                      marginTop: '10px',
-                      marginBottom: '10px'}} 
-                className='divider'/>
+      <Divider
+        sx={{
+          height: '1px',
+          backgroundColor: '#00000033',
+          marginTop: '10px',
+          marginBottom: '10px',
+        }}
+        className="divider"
+      />
 
       <Box className="chat-messages">
         {chatMessages.map((msg, index) => (
@@ -42,11 +73,13 @@ const ChatInterface = () => {
             key={index}
             className={`chat-message ${msg.sender === 'user' ? 'chat-message-user' : 'chat-message-system'}`}
           >
-            {msg.text}
+            {msg.text && <p>{msg.text}</p>}
+            {msg.image && <img src={msg.image} alt="Captured" className="chat-image-preview" />}
             <span className="chat-timestamp">{msg.time}</span>
           </Box>
         ))}
       </Box>
+
       <TextField
         variant="outlined"
         fullWidth
@@ -54,9 +87,19 @@ const ChatInterface = () => {
         onChange={(e) => setMessage(e.target.value)}
         placeholder="Hello! How can we help you today?"
         InputProps={{
+          startAdornment: capturedImage && (
+            <InputAdornment position="start">
+              <Box className="image-preview-container">
+                <img src={capturedImage} alt="Preview" className="image-preview" />
+                <IconButton className="remove-image-button" onClick={handleRemoveImage}>
+                  <Clear />
+                </IconButton>
+              </Box>
+            </InputAdornment>
+          ),
           endAdornment: (
             <InputAdornment position="end">
-              <IconButton className="icon-button">
+              <IconButton className="icon-button" onClick={handleOpenWebcam}>
                 <CameraAlt />
               </IconButton>
               <IconButton className="icon-button">
@@ -70,7 +113,7 @@ const ChatInterface = () => {
         }}
         className="chat-input"
         sx={{
-          width: '100%', 
+          width: '100%',
           backgroundColor: '#FFFFFF',
           boxShadow: '0px 4px 4px 0px #00000040',
           '& .MuiOutlinedInput-root': {
@@ -80,6 +123,28 @@ const ChatInterface = () => {
           },
         }}
       />
+
+      {/* Webcam Modal */}
+      <Modal open={openWebcam} onClose={handleCloseWebcam}>
+        <Box className="webcam-modal">
+          <ReactWebcam
+            audio={false}
+            ref={webcamRef}
+            screenshotFormat="image/jpeg"
+            width={500}
+            height={400}
+            className="webcam-frame"
+          />
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => handleCapture(webcamRef)}
+            className="capture-button"
+          >
+            Capture
+          </Button>
+        </Box>
+      </Modal>
     </Box>
   );
 };
