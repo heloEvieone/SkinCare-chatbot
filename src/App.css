@@ -1,24 +1,33 @@
 .app-container {
   display: flex;
   min-height: 100vh; /* Full viewport height, adjusts dynamically */
-  background: linear-gradient(135deg, #7e57c2, #42a5f5);
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, #d2b8ff, #db9ec0, #42a5f5);
 }
 
+.second-container{
+  display: flex;
+}
 
-.sidebar-left {
+.sidebar-left-div {
+  margin: 20px 0px 100px 40px;
+  height: 77%;
   flex: 0 0 15%; /* 15% of the width */
   display: flex;
+  flex-direction: column;
 }
 
-.chat-interface {
+.chat-interface-div {
+  margin-top: 20px;
+  margin-right: 20px;
   flex: 1; /* Takes up the remaining width */
   display: flex;
+  height: 90%;
 }
 
-.sidebar-right-right {
-  margin-top: 50px;
+.sidebar-right-div {
+  margin-top: 20px;
   margin-right: 40px;
   display: flex;
   flex-direction: column;
+  height: 90%;
 }

@@ -8,15 +8,17 @@ import './App.css';  // Importing the CSS file
 const App = () => {
   return (
     <Box className="app-container">
-      <Box className="sidebar-left">
+      <div className='second-container'>
+      <Box className="sidebar-left-div">
         <SidebarLeft />
       </Box>
-      <Box className="chat-interface">
+      <Box className="chat-interface-div">
         <ChatInterface />
       </Box>
-      <Box className="sidebar-right-right">
+      <Box className="sidebar-right-div">
         <SidebarRight />
       </Box>
+      </div>
     </Box>
   );
 };
