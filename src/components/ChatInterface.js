@@ -10,6 +10,7 @@ const ChatInterface = () => {
   const [chatMessages, setChatMessages] = useState([]);
   const [openWebcam, setOpenWebcam] = useState(false);
   const [capturedImage, setCapturedImage] = useState(null);
+  const [error, setError] = useState('');
 
   const handleSendMessage = () => {
     if (message.trim() || capturedImage) {
@@ -29,6 +30,7 @@ const ChatInterface = () => {
       // Clear the input and image
       setMessage('');
       setCapturedImage(null);
+      setError(''); // Clear error if any
     }
   };
 
@@ -48,6 +50,21 @@ const ChatInterface = () => {
 
   const handleRemoveImage = () => {
     setCapturedImage(null);
+  };
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    if (file && file.type.startsWith('image/')) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setCapturedImage(reader.result); // Set the uploaded image as a preview
+      };
+      reader.readAsDataURL(file);
+      setError('');
+    } else {
+      setError('Only image files are allowed');
+    }
+    event.target.value = ''; // Reset the file input so the same file can be uploaded again if needed
   };
 
   const webcamRef = React.useRef(null);
@@ -80,6 +97,8 @@ const ChatInterface = () => {
         ))}
       </Box>
 
+      {error && <p style={{ color: 'red' }}>{error}</p>} {/* Display error if a non-image file is uploaded */}
+
       <TextField
         variant="outlined"
         fullWidth
@@ -103,7 +122,16 @@ const ChatInterface = () => {
                 <CameraAlt />
               </IconButton>
               <IconButton className="icon-button">
-                <AttachFile />
+                <label htmlFor="upload-image">
+                  <AttachFile />
+                </label>
+                <input
+                  type="file"
+                  accept="image/*"
+                  id="upload-image"
+                  style={{ display: 'none' }}
+                  onChange={handleFileChange}
+                />
               </IconButton>
               <IconButton onClick={handleSendMessage} className="icon-button">
                 <Send />
