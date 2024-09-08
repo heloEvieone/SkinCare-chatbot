@@ -32,7 +32,7 @@ const SidebarRight = () => {
       </List>
 
       <div className='history-btn-gp'>
-      <Button variant="contained" fullWidth className="chat-history-btn"
+        {/* <Button variant="contained" fullWidth className="chat-history-btn"
         sx={{ backgroundColor: '#E9EAFE',
               color: '#000000',
               boxShadow: '0px 4px 4px 0px #00000040',
@@ -41,7 +41,8 @@ const SidebarRight = () => {
         }}
       >
        Hair Care
-      </Button>
+      </Button>*/}
+      
       <Button variant="contained" fullWidth className="chat-history-btn"
         sx={{ backgroundColor: '#E9EAFE',
               color: '#000000',
@@ -50,7 +51,7 @@ const SidebarRight = () => {
               marginBottom: '20px'
         }}
       >
-        Body Care
+        Korean Products
       </Button>
       <Button variant="contained" fullWidth className="chat-history-btn"
         sx={{ backgroundColor: '#E9EAFE', 
