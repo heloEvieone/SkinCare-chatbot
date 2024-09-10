@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, List, ListItem, ListItemIcon } from '@mui/material';
 import { ChatBubble, Settings, ExitToApp } from '@mui/icons-material'; // Import ExitToApp icon
 import './SidebarLeft.css';
-import logo from '../assets/logo.png';
+import logo from '../../assets/logo.png';
 
 const SidebarLeft = () => {
   return (

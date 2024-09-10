@@ -1,0 +1,38 @@
+.app-container {
+    background-image: url('../../assets/bg1.jpg');
+    background-size: cover;  /* Ensures the background covers the whole container */
+    background-position: center;  /* Centers the background image */
+    background-repeat: no-repeat;  /* Prevents the background from repeating */
+    min-height: 100vh;  /* Ensures the container takes full height of the viewport */
+    display: flex;
+  }
+  
+  .second-container{
+    margin-top: 30px;
+    display: flex;
+  }
+  
+  .sidebar-left-div {
+    margin: 20px 0px 0px 40px;
+    height: 85%;
+    flex: 0 0 15%; /* 15% of the width */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .chat-interface-div {
+    margin-top: 20px;
+    margin-right: 20px;
+    flex: 1; /* Takes up the remaining width */
+    display: flex;
+    height: 90%;
+  }
+  
+  .sidebar-right-div {
+    margin-top: 20px;
+    margin-right: 40px;
+    display: flex;
+    flex-direction: column;
+    height: 90%;
+  }
+  
