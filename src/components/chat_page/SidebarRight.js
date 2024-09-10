@@ -44,7 +44,7 @@ const SidebarRight = () => {
       </Button>*/}
       
       <Button variant="contained" fullWidth className="chat-history-btn"
-        sx={{ backgroundColor: '#E9EAFE',
+        sx={{ backgroundColor: '#ffffff',
               color: '#000000',
               boxShadow: '0px 4px 4px 0px #00000040',
               borderRadius: '12px',
@@ -54,7 +54,7 @@ const SidebarRight = () => {
         Korean Products
       </Button>
       <Button variant="contained" fullWidth className="chat-history-btn"
-        sx={{ backgroundColor: '#E9EAFE', 
+        sx={{ backgroundColor: '#ffffff', 
               color: '#000000',
               boxShadow: '0px 4px 4px 0px #00000040',
               borderRadius: '12px',

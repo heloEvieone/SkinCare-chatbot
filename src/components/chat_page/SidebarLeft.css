@@ -1,9 +1,18 @@
 .sidebar-left {
-  border-right: 1px solid #ddd;
-  width: 70px;
-  height: 90%;
-  border-radius: 15px;
+  border-right: 1px solid #ffffff75;
+  width: 80px;  /* Collapsed width */
+  height: 100vh;
   box-shadow: 0px 4px 4px 0px #00000040;
+  transition: width 0.3s ease;
+  border-radius: 15px;
+}
+
+.expanded {
+  width: 200px;  /* Expanded width */
+}
+
+.collapsed {
+  width: 80px;  /* Collapsed width */
 }
 
 .logo-container {
@@ -32,4 +41,10 @@
   color: #555; /* Icon color */
   justify-content: center; /* Center the icon inside the ListItemIcon */
   display: flex;
+}
+
+.sidebar-text {
+  margin-left: 10px;
+  color: #555;
+  font-size: 14px;
 }

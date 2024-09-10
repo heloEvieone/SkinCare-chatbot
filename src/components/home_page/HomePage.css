@@ -1,0 +1,22 @@
+.home-container {
+    background-image: url('../../assets/bg2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    position: relative;  /* Set the home container's position to relative so that the absolute position of the btn will be relative to this container */
+}
+
+.btn {
+    position: absolute;  /* Position the button absolutely within the home container */
+    top: 61%;  /* Center the button vertically */
+    left: 11%;  /* Center the button horizontally */
+    transform: translate(-50%, -50%);  /* Adjust the position to center the button exactly */
+}
+
+.logo {
+    position: absolute;  /* Position the button absolutely within the home container */
+    top: 15%;  /* Center the button vertically */
+    left: 7%;  /* Center the button horizontally */
+    transform: translate(-50%, -50%);  /* Adjust the position to center the button exactly */
+}
